@@ -1,0 +1,13 @@
+services:
+  memos:
+    restart: always
+    image: whatwewant/memos:${SERVICE_MEMOS_IMAGE_VERSION}
+    environment:
+      PORT: $SERVICE_MEMOS_PORT
+      USERNAME: ${SERVICE_MEMOS_USERNAME}
+      PASSWORD: ${SERVICE_MEMOS_PASSWORD}
+      
+networks:
+  default:
+    external: true
+    name: compose-ingress

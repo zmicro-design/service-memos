@@ -1,0 +1,26 @@
+services:
+  memos:
+    restart: always
+    image: whatwewant/connect-doreamon:v1
+    environment:
+      UPSTREAM: http://memos_upstream:5230
+      SECRET_KEY: ${SERVICE_MEMOS_SECRET_KEY}
+      CLIENT_ID: ${SERVICE_MEMOS_DOREAMON_CLIENT_ID}
+      CLIENT_SECRET: ${SERVICE_MEMOS_DOREAMON_CLIENT_SECRET}
+      REDIRECT_URI: ${SERVICE_MEMOS_DOREAMON_REDIRECT_URI}
+
+  memos_upstream:
+    restart: always
+    image: whatwewant/memos:${SERVICE_MEMOS_IMAGE_VERSION}
+    platform: linux/amd64
+    # ports:
+    #   - 0.0.0.0:${SERVICE_MEMOS_PORT}:5230
+    environment:
+      SECRET_KEY: ${SERVICE_MEMOS_SECRET_KEY}
+    volumes:
+      - ${SERVICE_MEMOS_DATA_HOME}/memos:/var/opt/memos
+      
+networks:
+  default:
+    external: true
+    name: compose-ingress
