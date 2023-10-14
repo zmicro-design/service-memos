@@ -1,4 +1,4 @@
 NAME=memos
-VERSION=v1.3.2
+VERSION=v0.0.1
 DESCRIPTION="memos Service"
 HomeURL="https://github.com/doreamon-design/memos"
