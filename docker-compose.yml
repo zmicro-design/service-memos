@@ -17,6 +17,7 @@ services:
     #   - 0.0.0.0:${SERVICE_MEMOS_PORT}:5230
     environment:
       SECRET_KEY: ${SERVICE_MEMOS_SECRET_KEY}
+      ADMIN_EMAIL: ${SERVICE_MEMOS_ADMIN_EMAIL}
     volumes:
       - ${SERVICE_MEMOS_DATA_HOME}/memos:/var/opt/memos
       

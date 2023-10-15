@@ -12,6 +12,7 @@ check() {
   fi
 
   service::config_set SERVICE_MEMOS_SECRET_KEY text "Secret Key:" "$(os::random_string 8)"
+  service::config_set SERVICE_MEMOS_ADMIN_EMAIL text "Admin Email:"
 }
 
 check $@
